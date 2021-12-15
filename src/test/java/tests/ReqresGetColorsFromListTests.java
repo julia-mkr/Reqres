@@ -1,28 +1,12 @@
 package tests;
 
-import com.google.gson.Gson;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import reqres_color_objects.ColorDataList;
 
 import static io.restassured.RestAssured.given;
+import static utils.ReqresTestUtils.*;
 
 public class ReqresGetColorsFromListTests extends ReqresBaseTest {
-
-    private int id;
-    private String name;
-    private int year;
-    private String color;
-    private String pantoneValue;
-
-    public void getColorData(String body, int num) {
-        ColorDataList colorDataList = new Gson().fromJson(body, ColorDataList.class);
-        id = colorDataList.getData().get(num).getId();
-        name = colorDataList.getData().get(num).getName();
-        year = colorDataList.getData().get(num).getYear();
-        color = colorDataList.getData().get(num).getColor();
-        pantoneValue = colorDataList.getData().get(num).getPantoneValue();
-    }
 
     @Test
     public void getColorInfoWithId1Test() {
@@ -33,11 +17,11 @@ public class ReqresGetColorsFromListTests extends ReqresBaseTest {
                 .statusCode(200)
                 .extract().body().asString();
         getColorData(body, 0);
-        Assert.assertEquals(id, 1);
-        Assert.assertEquals(name, "cerulean");
-        Assert.assertEquals(year, 2000);
-        Assert.assertEquals(color, "#98B2D1");
-        Assert.assertEquals(pantoneValue, "15-4020");
+        Assert.assertEquals(getId(), 1);
+        Assert.assertEquals(getName(), "cerulean");
+        Assert.assertEquals(getYear(), 2000);
+        Assert.assertEquals(getColor(), "#98B2D1");
+        Assert.assertEquals(getPantoneValue(), "15-4020");
     }
 
     @Test
@@ -49,11 +33,11 @@ public class ReqresGetColorsFromListTests extends ReqresBaseTest {
                 .statusCode(200)
                 .extract().body().asString();
         getColorData(body, 1);
-        Assert.assertEquals(id, 2);
-        Assert.assertEquals(name, "fuchsia rose");
-        Assert.assertEquals(year, 2001);
-        Assert.assertEquals(color, "#C74375");
-        Assert.assertEquals(pantoneValue, "17-2031");
+        Assert.assertEquals(getId(), 2);
+        Assert.assertEquals(getName(), "fuchsia rose");
+        Assert.assertEquals(getYear(), 2001);
+        Assert.assertEquals(getColor(), "#C74375");
+        Assert.assertEquals(getPantoneValue(), "17-2031");
     }
 
     @Test
@@ -65,11 +49,11 @@ public class ReqresGetColorsFromListTests extends ReqresBaseTest {
                 .statusCode(200)
                 .extract().body().asString();
         getColorData(body, 2);
-        Assert.assertEquals(id, 3);
-        Assert.assertEquals(name, "true red");
-        Assert.assertEquals(year, 2002);
-        Assert.assertEquals(color, "#BF1932");
-        Assert.assertEquals(pantoneValue, "19-1664");
+        Assert.assertEquals(getId(), 3);
+        Assert.assertEquals(getName(), "true red");
+        Assert.assertEquals(getYear(), 2002);
+        Assert.assertEquals(getColor(), "#BF1932");
+        Assert.assertEquals(getPantoneValue(), "19-1664");
     }
 
     @Test
@@ -81,11 +65,11 @@ public class ReqresGetColorsFromListTests extends ReqresBaseTest {
                 .statusCode(200)
                 .extract().body().asString();
         getColorData(body, 3);
-        Assert.assertEquals(id, 4);
-        Assert.assertEquals(name, "aqua sky");
-        Assert.assertEquals(year, 2003);
-        Assert.assertEquals(color, "#7BC4C4");
-        Assert.assertEquals(pantoneValue, "14-4811");
+        Assert.assertEquals(getId(), 4);
+        Assert.assertEquals(getName(), "aqua sky");
+        Assert.assertEquals(getYear(), 2003);
+        Assert.assertEquals(getColor(), "#7BC4C4");
+        Assert.assertEquals(getPantoneValue(), "14-4811");
     }
 
     @Test
@@ -97,11 +81,11 @@ public class ReqresGetColorsFromListTests extends ReqresBaseTest {
                 .statusCode(200)
                 .extract().body().asString();
         getColorData(body, 4);
-        Assert.assertEquals(id, 5);
-        Assert.assertEquals(name, "tigerlily");
-        Assert.assertEquals(year, 2004);
-        Assert.assertEquals(color, "#E2583E");
-        Assert.assertEquals(pantoneValue, "17-1456");
+        Assert.assertEquals(getId(), 5);
+        Assert.assertEquals(getName(), "tigerlily");
+        Assert.assertEquals(getYear(), 2004);
+        Assert.assertEquals(getColor(), "#E2583E");
+        Assert.assertEquals(getPantoneValue(), "17-1456");
     }
 
     @Test
@@ -113,10 +97,10 @@ public class ReqresGetColorsFromListTests extends ReqresBaseTest {
                 .statusCode(200)
                 .extract().body().asString();
         getColorData(body, 5);
-        Assert.assertEquals(id, 6);
-        Assert.assertEquals(name, "blue turquoise");
-        Assert.assertEquals(year, 2005);
-        Assert.assertEquals(color, "#53B0AE");
-        Assert.assertEquals(pantoneValue, "15-5217");
+        Assert.assertEquals(getId(), 6);
+        Assert.assertEquals(getName(), "blue turquoise");
+        Assert.assertEquals(getYear(), 2005);
+        Assert.assertEquals(getColor(), "#53B0AE");
+        Assert.assertEquals(getPantoneValue(), "15-5217");
     }
 }

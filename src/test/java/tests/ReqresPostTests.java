@@ -32,6 +32,7 @@ public class ReqresPostTests extends ReqresBaseTest {
                 .password("pistol")
                 .build();
         given()
+                .header("Content-Type", "application/json")
                 .body(user)
         .when()
                 .post("/register")
@@ -39,7 +40,6 @@ public class ReqresPostTests extends ReqresBaseTest {
                 .log().all()
                 .statusCode(200)
                 .body("token", equalTo("QpwL5tke4Pnpja7X4"));
-//        After sending a post request, the error 'Missing email or username' appears and the status code is 400
     }
 
     @Test
@@ -64,6 +64,7 @@ public class ReqresPostTests extends ReqresBaseTest {
                 .password("cityslicka")
                 .build();
         given()
+                .header("Content-Type", "application/json")
                 .body(user)
         .when()
                 .post("/login")
@@ -71,7 +72,6 @@ public class ReqresPostTests extends ReqresBaseTest {
                 .log().all()
                 .statusCode(200)
                 .body("token", equalTo("QpwL5tke4Pnpja7X4"));
-//        After sending a post request, the error 'Missing email or username' appears and the status code is 400
     }
 
     @Test
