@@ -2,7 +2,9 @@ package utils;
 
 import com.google.gson.Gson;
 import lombok.Getter;
+import reqres_color_objects.ColorData;
 import reqres_color_objects.ColorDataList;
+import reqres_user_objects.UserData;
 import reqres_user_objects.UserDataList;
 
 public class ReqresTestUtils {
@@ -26,21 +28,25 @@ public class ReqresTestUtils {
     @Getter
     private static String pantoneValue;
 
-    public static void getUserData(String body, int num) {
+    public static UserData getUserData(String body, int num) {
+        UserData userData = new UserData();
         UserDataList userDataList = new Gson().fromJson(body, UserDataList.class);
-        id = userDataList.getData().get(num).getId();
-        email = userDataList.getData().get(num).getEmail();
-        firstName = userDataList.getData().get(num).getFirstName();
-        lastName = userDataList.getData().get(num).getLastName();
-        avatar = userDataList.getData().get(num).getAvatar();
+        userData.setId(userDataList.getData().get(num).getId());
+        userData.setEmail(userDataList.getData().get(num).getEmail());
+        userData.setFirstName(userDataList.getData().get(num).getFirstName());
+        userData.setLastName(userDataList.getData().get(num).getLastName());
+        userData.setAvatar(userDataList.getData().get(num).getAvatar());
+        return userData;
     }
 
-    public static void getColorData(String body, int num) {
+    public static ColorData getColorData(String body, int num) {
+        ColorData colorData = new ColorData();
         ColorDataList colorDataList = new Gson().fromJson(body, ColorDataList.class);
-        id = colorDataList.getData().get(num).getId();
-        name = colorDataList.getData().get(num).getName();
-        year = colorDataList.getData().get(num).getYear();
-        color = colorDataList.getData().get(num).getColor();
-        pantoneValue = colorDataList.getData().get(num).getPantoneValue();
+        colorData.setId(colorDataList.getData().get(num).getId());
+        colorData.setName(colorDataList.getData().get(num).getName());
+        colorData.setYear(colorDataList.getData().get(num).getYear());
+        colorData.setColor(colorDataList.getData().get(num).getColor());
+        colorData.setPantoneValue(colorDataList.getData().get(num).getPantoneValue());
+        return colorData;
     }
 }
